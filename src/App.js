@@ -1,3 +1,4 @@
+// import React from "react";
 import Expenses from "./components/Expenses";
 
 function App() {
@@ -22,6 +23,17 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  // //createElement takes 3 arguments
+  // //1 - element that should be created; 2 - object that sets all attributes; 3 - content (1 element per content)
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "Let's get started!"),
+  //   // point to custom element, attributes, no content
+  //   React.createElement(Expenses, { items: expenses })
+  // );
+
   return (
     <div>
       <h2>Let's get started!</h2>
