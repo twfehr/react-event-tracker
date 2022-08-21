@@ -1,6 +1,6 @@
 // import React from "react";
 import Expenses from "./components/Expenses/Expenses";
-
+import NewExpense from "./components/NewExpense/NewExpense";
 const App = () => {
   const expenses = [
     {
@@ -24,19 +24,9 @@ const App = () => {
     },
   ];
 
-  // //createElement takes 3 arguments
-  // //1 - element that should be created; 2 - object that sets all attributes; 3 - content (1 element per content)
-  // return React.createElement(
-  //   "div",
-  //   {},
-  //   React.createElement("h2", {}, "Let's get started!"),
-  //   // point to custom element, attributes, no content
-  //   React.createElement(Expenses, { items: expenses })
-  // );
-
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense />
       <Expenses items={expenses} />
     </div>
   );
