@@ -11,6 +11,12 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
 
+  //if item returns true, it is kept
+  const filteredExpenses = props.items.filter((expense) => {
+    //convert date object's year to string because filteredYear is string
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <div>
       <Card className="expenses">
@@ -19,7 +25,7 @@ const Expenses = (props) => {
           selected={filteredYear}
         />
         {/* map takes a function as an argument which executes for every element in the array. We are mapping our expense object to a JSX element*/}
-        {props.items.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
