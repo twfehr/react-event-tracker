@@ -3,6 +3,7 @@ import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from "./ExpensesList";
 import { useState } from "react";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   //initialize state with value of '2020'
@@ -24,6 +25,8 @@ const Expenses = (props) => {
           onChangeFilter={filterChangeHandler}
           selected={filteredYear}
         />
+        {/* pass in filtered expenses for chart */}
+        <ExpensesChart expenses={filteredExpenses} />
         {/* This variable holds conditional JSX code */}
         <ExpensesList items={filteredExpenses} />
       </Card>
