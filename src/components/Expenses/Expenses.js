@@ -26,9 +26,8 @@ const Expenses = (props) => {
         />
 
         {/* map takes a function as an argument which executes for every element in the array. We are mapping our expense object to a JSX element*/}
-        {filteredExpenses.length === 0 ? (
-          <p>No expenses found.</p>
-        ) : (
+        {filteredExpenses.length === 0 && <p>No expenses found</p>}
+        {filteredExpenses.length > 0 &&
           filteredExpenses.map((expense) => (
             <ExpenseItem
               key={expense.id}
@@ -36,8 +35,7 @@ const Expenses = (props) => {
               amount={expense.amount}
               date={expense.date}
             />
-          ))
-        )}
+          ))}
       </Card>
     </div>
   );
