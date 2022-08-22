@@ -21,6 +21,7 @@ const Expenses = (props) => {
         {/* map takes a function as an argument which executes for every element in the array. We are mapping our expense object to a JSX element*/}
         {props.items.map((expense) => (
           <ExpenseItem
+            key={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
