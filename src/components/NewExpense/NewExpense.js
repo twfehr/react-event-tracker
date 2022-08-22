@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
 const NewExpense = (props) => {
+  const [isEditing, SetIsEditing] = useState(false);
+
+  const startEditingHandler = () => {
+    SetIsEditing(true);
+  };
+
+  const stopEditingHandler = () => {
+    SetIsEditing(false);
+  };
+
   //function expects to get enteredExpenseData as a parameter
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
@@ -13,10 +23,22 @@ const NewExpense = (props) => {
     };
     //call prop that has the function we made inside of App.js, pass expenseData as an argument
     props.onAddExpense(expenseData);
+    //close form when submitted
+    SetIsEditing(false);
   };
+
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {/* could have worked with an if-check with variable w default value, or used a ternary expression to conditionally render button*/}
+      {!isEditing && (
+        <button onClick={startEditingHandler}>Add New Expense</button>
+      )}
+      {isEditing && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onCancel={stopEditingHandler}
+        />
+      )}
     </div>
   );
 };
